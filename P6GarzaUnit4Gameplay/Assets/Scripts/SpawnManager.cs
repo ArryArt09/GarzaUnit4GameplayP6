@@ -5,13 +5,26 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject enemyPrefab;
     private float spawnRange = 9;
+    public int enemyCount;
     public bool funMode = false;
+
+    public int waveNumber = 1;
+    public GameObject powerupPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (!funMode)
          {
+            SpawnEnemyWave(waveNumber);
+        }
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+    }
+
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         }
     }
@@ -30,6 +43,14 @@ public class SpawnManager : MonoBehaviour
         if (funMode)
         {
             Instantiate(enemyPrefab, new Vector3(0, 0, 0), enemyPrefab.transform.rotation);
+        }
+
+        enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
+        if (enemyCount == 0)
+        {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
         }
     }
 }

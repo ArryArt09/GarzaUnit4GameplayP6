@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     public bool Activated = false;
 
+    public float killZone = 10f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +24,11 @@ public class Enemy : MonoBehaviour
         {
             Vector3 lookDirection = (player.transform.position - transform.position).normalized;
             enemyRb.AddForce(lookDirection * speed);
+
+            if (transform.position.y < -killZone)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

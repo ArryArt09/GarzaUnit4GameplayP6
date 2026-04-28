@@ -25,11 +25,40 @@ public class Enemy : MonoBehaviour
             Vector3 lookDirection = (player.transform.position - transform.position).normalized;
             enemyRb.AddForce(lookDirection * speed);
 
+            
+        }
+
+        // Kill code
             if (transform.position.y < -killZone)
             {
                 Destroy(gameObject);
             }
-        }
+
+            if (transform.position.y > killZone)
+            {
+                Destroy(gameObject);
+            }
+
+            if (transform.position.x < -killZone * 2)
+            {
+                Destroy(gameObject);
+            }
+
+            if (transform.position.x > killZone * 2)
+            {
+                Destroy(gameObject);
+            }
+
+            if (transform.position.z < -killZone * 2)
+            {
+                Destroy(gameObject);
+            }
+
+            if (transform.position.z > killZone * 2)
+            {
+                Destroy(gameObject);
+            }
+
     }
 
     private void OnCollisionEnter(Collision collision)

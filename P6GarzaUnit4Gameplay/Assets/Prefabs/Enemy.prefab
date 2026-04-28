@@ -151,3 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.75
   Activated: 0
+  killZone: 25

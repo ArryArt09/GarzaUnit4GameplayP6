@@ -4,7 +4,6 @@ public class RocketBehavior : MonoBehaviour
 {
 
     private Transform target;
-    public Transform homingTarget;
     private float speed = 15;
     private bool homing;
 
@@ -30,7 +29,7 @@ public class RocketBehavior : MonoBehaviour
 
     public void Fire(Transform NewTarget)
     {
-        target = homingTarget;
+        target = NewTarget;
         homing = true;
         Destroy(gameObject, aliveTimer);
     }

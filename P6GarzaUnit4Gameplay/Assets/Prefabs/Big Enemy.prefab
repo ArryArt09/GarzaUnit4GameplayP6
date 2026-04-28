@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7.5
   Activated: 0
-  killZone: 10
+  killZone: 25
 --- !u!54 &6727440910669416469
 Rigidbody:
   m_ObjectHideFlags: 0

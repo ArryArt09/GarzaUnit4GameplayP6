@@ -33,6 +33,14 @@ public class PlayerControllerX : MonoBehaviour
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
 
+        if (hasPowerup && Input.GetKeyDown(KeyCode.Space))
+        {
+            speed = speed * 4;
+        }
+        else
+        {
+            speed = 500;
+        }
     }
 
     // If Player collides with powerup, activate powerup
